@@ -1,1 +1,1 @@
-# TailAdmin Next.js
+# Hypecraft admin dashboard
