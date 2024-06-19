@@ -95,13 +95,13 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
 
   return (
     <div className="relative z-50">
-      <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+      <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
         Multiselect Dropdown
       </label>
       <div>
         <select className="hidden" id={id}>
-          <option value="1">Option 2</option>
-          <option value="2">Option 3</option>
+          <option value="1">Design</option>
+          <option value="2">Development</option>
           <option value="3">Option 4</option>
           <option value="4">Option 5</option>
         </select>
@@ -111,12 +111,12 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
           <div className="relative z-20 inline-block w-full">
             <div className="relative flex flex-col items-center">
               <div ref={trigger} onClick={open} className="w-full">
-                <div className="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
+                <div className="mb-2 flex rounded-[7px] border-[1.5px] border-stroke py-[9px] pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-dark-3 dark:bg-dark-2">
                   <div className="flex flex-auto flex-wrap gap-3">
                     {selected.map((index) => (
                       <div
                         key={index}
-                        className="my-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray px-2.5 py-1.5 text-sm font-medium dark:border-strokedark dark:bg-white/30"
+                        className="flex items-center justify-center rounded-[5px] border-[.5px] border-stroke bg-gray-2 px-2.5 py-[3px] text-body-sm font-medium dark:border-dark-3 dark:bg-dark"
                       >
                         <div className="max-w-full flex-initial">
                           {options[index].text}
@@ -124,7 +124,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                         <div className="flex flex-auto flex-row-reverse">
                           <div
                             onClick={() => remove(index)}
-                            className="cursor-pointer pl-2 hover:text-danger"
+                            className="cursor-pointer pl-1 hover:text-red"
                           >
                             <svg
                               className="fill-current"
@@ -139,8 +139,8 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                                 fillRule="evenodd"
                                 clipRule="evenodd"
                                 d="M9.35355 3.35355C9.54882 3.15829 9.54882 2.84171 9.35355 2.64645C9.15829 2.45118 8.84171 2.45118 8.64645 2.64645L6 5.29289L3.35355 2.64645C3.15829 2.45118 2.84171 2.45118 2.64645 2.64645C2.45118 2.84171 2.45118 3.15829 2.64645 3.35355L5.29289 6L2.64645 8.64645C2.45118 8.84171 2.45118 9.15829 2.64645 9.35355C2.84171 9.54882 3.15829 9.54882 3.35355 9.35355L6 6.70711L8.64645 9.35355C8.84171 9.54882 9.15829 9.54882 9.35355 9.35355C9.54882 9.15829 9.54882 8.84171 9.35355 8.64645L6.70711 6L9.35355 3.35355Z"
-                                fill="currentColor"
-                              ></path>
+                                fill=""
+                              />
                             </svg>
                           </div>
                         </div>
@@ -150,33 +150,32 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                       <div className="flex-1">
                         <input
                           placeholder="Select an option"
-                          className="h-full w-full appearance-none bg-transparent p-1 px-2 outline-none"
+                          className="h-full w-full appearance-none bg-transparent p-1 px-2 text-dark-5 outline-none dark:text-dark-6"
                           defaultValue={selectedValues()}
                         />
                       </div>
                     )}
                   </div>
-                  <div className="flex w-8 items-center py-1 pl-1 pr-1">
+                  <div className="flex items-center py-1 pl-1 pr-1">
                     <button
                       type="button"
                       onClick={open}
-                      className="h-6 w-6 cursor-pointer outline-none focus:outline-none"
+                      className="cursor-pointer text-dark-4 outline-none focus:outline-none dark:text-dark-6"
                     >
                       <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
+                        className="fill-current"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g opacity="0.8">
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                            fill="#637381"
-                          ></path>
-                        </g>
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M3.69149 7.09327C3.91613 6.83119 4.31069 6.80084 4.57277 7.02548L9.99936 11.6768L15.4259 7.02548C15.688 6.80084 16.0826 6.83119 16.3072 7.09327C16.5319 7.35535 16.5015 7.74991 16.2394 7.97455L10.4061 12.9745C10.172 13.1752 9.82667 13.1752 9.59261 12.9745L3.75928 7.97455C3.4972 7.74991 3.46685 7.35535 3.69149 7.09327Z"
+                          fill=""
+                        />
                       </svg>
                     </button>
                   </div>
@@ -184,7 +183,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
               </div>
               <div className="w-full px-4">
                 <div
-                  className={`max-h-select absolute left-0 top-full z-40 w-full overflow-y-auto rounded bg-white shadow dark:bg-form-input ${
+                  className={`max-h-select absolute left-0 top-full z-40 w-full overflow-y-auto rounded bg-white shadow-1 dark:bg-dark-2 dark:shadow-card ${
                     isOpen() ? "" : "hidden"
                   }`}
                   ref={dropdownRef}
@@ -195,7 +194,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                     {options.map((option, index) => (
                       <div key={index}>
                         <div
-                          className="w-full cursor-pointer rounded-t border-b border-stroke hover:bg-primary/5 dark:border-form-strokedark"
+                          className="w-full cursor-pointer rounded-t border-b border-stroke hover:bg-primary/5 dark:border-dark-3"
                           onClick={(event) => select(index, event)}
                         >
                           <div

@@ -1,1 +1,1 @@
-# Hypecraft admin dashboard
+**Hypecraft Admin** Admin dashboard
