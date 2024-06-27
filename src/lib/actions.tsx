@@ -2,7 +2,7 @@
 
 export async function runPipeline(prevState: any, data: FormData) {
   try {
-    const res = await fetch(`http://localhost:5000/runpipeline`, {
+    const res = await fetch(`http://99.66.145.103:5000/runpipeline`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export async function runPipeline(prevState: any, data: FormData) {
 
 export async function generateNewsletter(prevState: any, data: FormData) {
   try {
-    const res = await fetch(`http://localhost:5000/generatenewsletter`, {
+    const res = await fetch(`http://99.66.145.103:5000/generatenewsletter`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export async function generateNewsletter(prevState: any, data: FormData) {
 
 export async function sendNewsletter(prevState: any, data: FormData) {
   try {
-    const res = await fetch(`http://localhost:5000/sendnewsletter`, {
+    const res = await fetch(`http://99.66.145.103:5000/sendnewsletter`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

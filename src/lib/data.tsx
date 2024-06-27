@@ -1,7 +1,7 @@
 "use server"
 export async function fetchPipelineDetailStatus(topic_id: number) {
   try {
-    const data = fetch(`http://localhost:5000/pipelinedetailstatus`, {
+    const data = fetch(`http://99.66.145.103:5000/pipelinedetailstatus`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export async function fetchPipelineDetailStatus(topic_id: number) {
 
 export async function fetchRunStatus(topic_id: number) {
   try {
-    const data = fetch(`http://localhost:5000/pipelinerunstatus`, {
+    const data = fetch(`http://99.66.145.103:5000/pipelinerunstatus`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nextui-org/date-picker": "^2.1.2",
+    "@vercel/postgres": "^0.9.0",
     "apexcharts": "^3.45.2",
     "bcrypt": "^5.1.1",
     "flatpickr": "^4.6.13",
