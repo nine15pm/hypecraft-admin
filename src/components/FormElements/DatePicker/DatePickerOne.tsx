@@ -1,14 +1,18 @@
 import flatpickr from "flatpickr";
 import { useEffect } from "react";
 
-const DatePickerOne = () => {
+const DatePickerOne = (props: {
+  name: string;
+  label: string;
+  required: boolean;
+}) => {
   useEffect(() => {
     // Init flatpickr
     flatpickr(".form-datepicker", {
       mode: "single",
       static: true,
       monthSelectorType: "static",
-      dateFormat: "M j, Y",
+      dateFormat: "m/d/Y",
       prevArrow:
         '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
       nextArrow:
@@ -19,10 +23,12 @@ const DatePickerOne = () => {
   return (
     <div>
       <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-        Date picker
+        {props.label}
+        {props.required && <span className="text-red">*</span>}
       </label>
-      <div className="relative">
+      <div className="relative mb-4.5">
         <input
+          name={props.name}
           className="form-datepicker w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary"
           placeholder="mm/dd/yyyy"
           data-class="flatpickr-right"

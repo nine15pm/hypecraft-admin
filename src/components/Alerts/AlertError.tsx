@@ -1,9 +1,13 @@
+"use client"
 import React from "react";
 
-const AlertError = () => {
+const AlertError = (props:{
+  header: string;
+  msg: string;
+}) => {
   return (
     <>
-      <div className="flex w-full rounded-[10px] border-l-6 border-red-light bg-red-light-5 px-7 py-8 dark:bg-[#1B1B24] dark:bg-opacity-30 md:p-9">
+      <div className="flex w-full rounded-[10px] border-l-6 border-red-light bg-red-light-5 px-4 py-4 dark:bg-[#1B1B24] dark:bg-opacity-30 md:p-4">
         <div className="mr-5 mt-[5px] flex h-8 w-full max-w-8 items-center justify-center rounded-md bg-red-light">
           <svg
             width="11"
@@ -21,11 +25,11 @@ const AlertError = () => {
         </div>
         <div className="w-full">
           <h5 className="mb-4 font-bold leading-[22px] text-[#BC1C21]">
-            There were 1 errors with your submission
+            {props.header}
           </h5>
           <ul>
             <li className="text-[#CD5D5D]">
-              Lorem Ipsum is simply dummy text of the printing
+              {props.msg}
             </li>
           </ul>
         </div>

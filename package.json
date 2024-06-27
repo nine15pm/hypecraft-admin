@@ -9,18 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/date-picker": "^2.1.2",
     "apexcharts": "^3.45.2",
+    "bcrypt": "^5.1.1",
     "flatpickr": "^4.6.13",
     "jsvectormap": "^1.5.3",
     "next": "^14.1.4",
+    "next-auth": "^5.0.0-beta.19",
     "react": "^18",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18",
     "react-quill": "^2.0.0",
     "react-select": "^5.8.0",
-    "react-table": "^7.8.0"
+    "react-table": "^7.8.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
