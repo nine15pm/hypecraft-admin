@@ -1,6 +1,6 @@
 "use server"
 export async function fetchPipelineDetailStatus(topic_id: number) {
-  try {
+
     const data = fetch(`http://99.66.145.103:5000/pipelinedetailstatus`, {
       method: 'POST',
       headers: {
@@ -12,14 +12,15 @@ export async function fetchPipelineDetailStatus(topic_id: number) {
 
     return (await data).json();
     
-  } catch (error) {
+
+   /*catch (error) {
     console.error('API error', error);
     throw new Error('Failed to fetch pipeline detail status.');
-  }
+  }*/
 }
 
 export async function fetchRunStatus(topic_id: number) {
-  try {
+
     const data = fetch(`http://99.66.145.103:5000/pipelinerunstatus`, {
       method: 'POST',
       headers: {
@@ -31,8 +32,8 @@ export async function fetchRunStatus(topic_id: number) {
 
     return (await data).json();
     
-  } catch (error) {
+/* catch (error) {
     console.error('API error', error);
     throw new Error('Failed to fetch run status.');
-  }
+  }*/
 }
