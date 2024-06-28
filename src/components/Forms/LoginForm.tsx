@@ -3,6 +3,8 @@ import { useFormStatus } from "react-dom";
 import { useFormState } from "react-dom"
 import { authenticate } from "@/lib/actions";
 import InputGroup from "../FormElements/InputGroup";
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 const initialState = {
   message: "",
@@ -10,8 +12,18 @@ const initialState = {
 }
 
 export default function LoginForm() {
-    const [errorMessage, formAction] = useFormState(authenticate, undefined)
+    const [loginMessage, formAction] = useFormState(authenticate, undefined)
     const { pending } = useFormStatus()
+
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get("callbackUrl") || "/pipeline";
+
+    useEffect(() => {
+      if (loginMessage === "success") {
+        router.push(callbackUrl);
+      }
+    }, [loginMessage, router, callbackUrl]);
 
     return (
       <div className="flex flex-col gap-9">
@@ -111,9 +123,9 @@ export default function LoginForm() {
                 aria-live="polite"
                 aria-atomic="true"
               >
-                {errorMessage && (
+                {loginMessage && (
                   <>
-                    <p className="text-sm text-red-500">{errorMessage}</p>
+                    <p className="text-sm text-red-500">{loginMessage}</p>
                   </>
                 )}
               </div>

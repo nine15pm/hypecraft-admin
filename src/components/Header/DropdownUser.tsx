@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +9,7 @@ import { logout } from "@/lib/actions";
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { data: session, status } = useSession()
-
+  
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
       <Link
@@ -31,7 +32,7 @@ const DropdownUser = () => {
         </span>
 
         <span className="flex items-center gap-2 font-medium text-dark dark:text-dark-6">
-          <span className="hidden lg:block"> {status === "authenticated" ? session.user.first_name : status} </span>
+          <span className="hidden lg:block"> {status === "authenticated" ? session.user?.first_name : status} </span>
 
           <svg
             className={`fill-current duration-200 ease-in ${dropdownOpen && "rotate-180"}`}
@@ -75,10 +76,10 @@ const DropdownUser = () => {
 
             <span className="block">
               <span className="block font-medium text-dark dark:text-white">
-                Jhon Smith
+                {status === "authenticated" ? session.user?.first_name : ""} {status === "authenticated" ? session.user?.last_name : ""}
               </span>
               <span className="block font-medium text-dark-5 dark:text-dark-6">
-                user@example.com
+                {status === "authenticated" ? session.user?.email : ""}
               </span>
             </span>
           </div>

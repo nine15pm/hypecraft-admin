@@ -1,6 +1,8 @@
 import NextAuth from 'next-auth';
+import { DefaultJWT, JWT } from 'next-auth/jwt';
+import { DefaultSession } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { authConfig } from '../auth.config';
+import { authConfig } from './auth.config';
 import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import type { User } from '@/types/User';
@@ -16,7 +18,7 @@ async function getUser(email: string): Promise<User | undefined> {
   }
 }
  
-export const { auth, signIn, signOut } = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
     ...authConfig,
     providers: [
       Credentials({
@@ -39,4 +41,36 @@ export const { auth, signIn, signOut } = NextAuth({
         },
       }),
     ],
+    callbacks: {
+      jwt({ trigger, token, user}) {
+        if (trigger === "signIn") {
+          token.first_name = user.first_name
+          token.last_name = user.last_name
+        }
+        return token
+      },
+      async session({ session, token }) {
+        session.user.first_name = token.first_name;
+        session.user.last_name = token.last_name; //  Add role value to user object so it is passed along with session          
+        return session;
+      },
+    },
   });
+
+  
+  declare module "next-auth" {
+    /**
+     * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+     */
+    interface User {
+      first_name: string;
+      last_name: string;
+    }
+  }
+
+  declare module "next-auth/jwt" {
+    interface JWT {
+      first_name: string;
+      last_name: string;
+    }
+  }

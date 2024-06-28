@@ -5,7 +5,6 @@ import { generateNewsletter } from "@/lib/actions";
 import SubmitAlert from "../Alerts/SubmitAlert";
 import InputGroup from "../FormElements/InputGroup";
 import DatePickerOne from "../FormElements/DatePicker/DatePickerOne";
-import { useSession } from "next-auth/react";
 
 const initialState = {
   message: "",
@@ -18,9 +17,6 @@ export default function GenerateNewsletterForm() {
     const statusmsg = generate_state.status === "success" ? <SubmitAlert alert_type="success" header="Success" msg={generate_state.message} show_time={4000} />
       : generate_state.status === "fail" ? <SubmitAlert alert_type="error" header="Error" msg={generate_state.message} show_time={4000} />
       : "";
-    const { data: session, status } = useSession()
-    console.log('gen session:', session)
-    console.log('gen status:', status)
 
     return (
       <div className="flex flex-col gap-9">

@@ -4,7 +4,6 @@ import LoginForm from "@/components/Forms/LoginForm";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import Signin from "@/components/Auth/Signin";
 
 export const metadata: Metadata = {
   title: "Hypecraft | Login",
