@@ -28,8 +28,8 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
-    "@types/react": "^19.0.0-rc-e02baf6c92-20240627",
-    "@types/react-dom": "^19.0.0-rc-e02baf6c92-20240627",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@types/react-table": "^7.7.19",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
