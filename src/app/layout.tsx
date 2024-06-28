@@ -5,6 +5,8 @@ import "@/css/satoshi.css";
 import "@/css/style.css";
 import React, { useEffect, useState } from "react";
 import Loader from "@/components/common/Loader";
+import { Providers } from "@/Providers";
+
 
 export default function RootLayout({
   children,
@@ -23,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        {loading ? <Loader /> : children}
+        <Providers>
+          {loading ? <Loader /> : children}
+        </Providers>
       </body>
     </html>
   );

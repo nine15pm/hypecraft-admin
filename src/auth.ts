@@ -1,10 +1,11 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { authConfig } from './auth.config';
+import { authConfig } from '../auth.config';
 import { z } from 'zod';
-//import type { User } from '@/app/lib/definitions';
+import { sql } from '@vercel/postgres';
+import type { User } from '@/types/User';
 import bcrypt from 'bcrypt';
- /*
+
 async function getUser(email: string): Promise<User | undefined> {
   try {
     const user = await sql<User>`SELECT * FROM users WHERE email=${email}`;
@@ -39,5 +40,3 @@ export const { auth, signIn, signOut } = NextAuth({
       }),
     ],
   });
-
-  */
