@@ -1,6 +1,6 @@
 "use server"
 
-const BACKEND_HOST_URL = process.env.BACKEND_URL
+const BACKEND_HOST_URL = `https://${process.env.BACKEND_URL}`
 
 export async function fetchPipelineDetailStatus(topic_id: number) {
 
