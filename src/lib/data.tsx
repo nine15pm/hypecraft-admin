@@ -1,39 +1,37 @@
 "use server"
+
+const BACKEND_HOST_URL = process.env.BACKEND_URL
+
 export async function fetchPipelineDetailStatus(topic_id: number) {
 
-    const data = fetch(`http://99.66.145.103:5000/pipelinedetailstatus`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ topic_id: topic_id }),
-      cache: 'no-store',
-    })
+  const url = new URL("/pipelinedetailstatus", BACKEND_HOST_URL)
 
-    return (await data).json();
-    
+  const data = fetch(url.toString(), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ topic_id: topic_id }),
+    cache: 'no-store',
+  })
 
-   /*catch (error) {
-    console.error('API error', error);
-    throw new Error('Failed to fetch pipeline detail status.');
-  }*/
+  return (await data).json();
+
 }
 
 export async function fetchRunStatus(topic_id: number) {
 
-    const data = fetch(`http://99.66.145.103:5000/pipelinerunstatus`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ topic_id: topic_id }),
-      cache: 'no-store',
-    })
+  const url = new URL("/pipelinerunstatus", BACKEND_HOST_URL)
 
-    return (await data).json();
-    
-/* catch (error) {
-    console.error('API error', error);
-    throw new Error('Failed to fetch run status.');
-  }*/
+  const data = fetch(url.toString(), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ topic_id: topic_id }),
+    cache: 'no-store',
+  })
+
+  return (await data).json();
+
 }

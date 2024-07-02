@@ -3,6 +3,8 @@ import { signIn } from "@/auth";
 import { AuthError } from 'next-auth';
 import { signOut } from "@/auth";
 
+const BACKEND_HOST_URL = process.env.BACKEND_URL
+
 export async function authenticate(
   prevState: string | undefined,
   formData: FormData,
@@ -29,8 +31,9 @@ export async function logout() {
 }
 
 export async function runPipeline(prevState: any, data: FormData) {
+  const url = new URL("/runpipeline", BACKEND_HOST_URL)
   try {
-    const res = await fetch(`http://99.66.145.103:5000/runpipeline`, {
+    const res = await fetch(url.toString(), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -56,8 +59,9 @@ export async function runPipeline(prevState: any, data: FormData) {
 }
 
 export async function generateNewsletter(prevState: any, data: FormData) {
+  const url = new URL("/generatenewsletter", BACKEND_HOST_URL)
   try {
-    const res = await fetch(`http://99.66.145.103:5000/generatenewsletter`, {
+    const res = await fetch(url.toString(), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -83,8 +87,9 @@ export async function generateNewsletter(prevState: any, data: FormData) {
 }
 
 export async function sendNewsletter(prevState: any, data: FormData) {
+  const url = new URL("/sendnewsletter", BACKEND_HOST_URL)
   try {
-    const res = await fetch(`http://99.66.145.103:5000/sendnewsletter`, {
+    const res = await fetch(url.toString(), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
