@@ -1,4 +1,16 @@
 /** @type {import("next").NextConfig} */
+
+async function redirects() {
+  return [
+    // Basic redirect
+    {
+      source: '/',
+      destination: '/pipeline',
+      permanent: true,
+    },
+  ]
+}
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -23,20 +35,8 @@ const nextConfig = {
         port: ""
       }
     ]
-  }
+  },
+  redirects: redirects(),
 };
 
 export default nextConfig;
-
-module.exports = {
-  async redirects() {
-    return [
-      // Basic redirect
-      {
-        source: '/',
-        destination: '/pipeline',
-        permanent: true,
-      },
-    ]
-  },
-}
