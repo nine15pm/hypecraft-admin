@@ -22,6 +22,7 @@ export default function LoginForm() {
     useEffect(() => {
       if (loginMessage === "success") {
         router.push(callbackUrl);
+        router.refresh();
       }
     }, [loginMessage, router, callbackUrl]);
 
