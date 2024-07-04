@@ -3,7 +3,7 @@ import { useFormStatus } from "react-dom";
 import { useFormState } from "react-dom"
 import { authenticate } from "@/lib/actions";
 import InputGroup from "../FormElements/InputGroup";
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 const initialState = {
@@ -15,16 +15,14 @@ export default function LoginForm() {
     const [loginMessage, formAction] = useFormState(authenticate, undefined)
     const { pending } = useFormStatus()
 
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const callbackUrl = "/pipeline";
-
     useEffect(() => {
+      const router = useRouter()
       if (loginMessage === "success") {
-        router.push(callbackUrl);
-        router.refresh();
+        return () => {
+          router.refresh();
+        };
       }
-    }, [loginMessage, router, callbackUrl]);
+    }, [loginMessage]);
 
     return (
       <div className="flex flex-col gap-9">
