@@ -17,7 +17,7 @@ export default function LoginForm() {
 
     const router = useRouter();
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get("callbackUrl") || "/pipeline";
+    const callbackUrl = "/pipeline";
 
     useEffect(() => {
       if (loginMessage === "success") {
