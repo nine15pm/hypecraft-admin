@@ -36,7 +36,7 @@ const nextConfig = {
       }
     ]
   },
-  redirects: redirects(),
+  redirects: redirects,
 };
 
 export default nextConfig;
