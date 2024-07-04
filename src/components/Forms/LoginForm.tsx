@@ -14,15 +14,15 @@ const initialState = {
 export default function LoginForm() {
     const [loginMessage, formAction] = useFormState(authenticate, undefined)
     const { pending } = useFormStatus()
+    const router = useRouter()
 
     useEffect(() => {
-      const router = useRouter()
       if (loginMessage === "success") {
         return () => {
           router.refresh();
         };
       }
-    }, [loginMessage]);
+    }, [loginMessage, router]);
 
     return (
       <div className="flex flex-col gap-9">
