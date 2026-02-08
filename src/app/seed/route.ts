@@ -2,20 +2,21 @@ import bcrypt from 'bcrypt';
 import { db } from '@vercel/postgres';
 
 const client = await db.connect();
+const seedUserPassword = process.env.SEED_USER_PASSWORD ?? 'replace_with_secure_seed_password';
 const users = [
     {
       id: '410544b2-4001-4271-9855-fec4b6a6442a',
       first_name: 'Admin',
-      last_name: 'User', 
+      last_name: 'User',
       email: 'admin@example.com',
-      password: 'replace_with_secure_seed_password',
+      password: seedUserPassword,
     },
     {
       id: 'd6e15727-9fe1-4961-8c5b-ea44a9bd81aa',
       first_name: 'Demo',
-      last_name: 'User', 
+      last_name: 'User',
       email: 'demo@example.com',
-      password: 'replace_with_secure_seed_password',
+      password: seedUserPassword,
     },
   ];
 
